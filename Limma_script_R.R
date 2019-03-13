@@ -42,7 +42,7 @@ dge <- calcNormFactors(dge)
 dge$samples
 # Create MDS plot (not yet voom-transformed)
 colors <- rep(c("purple","blue","red","orange"))
-colorsECS <- rep(c("pink","green","black","brown"))
+**colorsECS <- rep(c("pink","green","black","brown"))**
 plotMDS(dge, labels=1:24,col=colors[f])
 
 # voom transformation using voomWithQualityWeights function
