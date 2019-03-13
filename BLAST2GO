@@ -1,0 +1,13 @@
+# Extract gene IDs from table of UH.vs.NH differentially expressed genes (UH.vs.NH.txt) provided by authors
+cut -d ' ' -f 1 UH.vs.NH.txt | sed 's/\"//g' > UH.vs.NH_gene_names.txt
+
+# Use gene IDs (UH.vs.NH_gene_names.txt) to extract gene sequences from indexed reference transcriptome (Transcriptome.fasta) and output to a FASTA file (UH.vs.NH_DE_gene_seq.fasta)
+samtools faidx Transcriptome.fasta
+xargs samtools faidx Transcriptome.fasta < UH.vs.NH_gene_names.txt >> UH.vs.NH_DE_gene_seq.fasta
+
+# Check that the new file is in the correct FASTA format
+less UH.vs.NH_DE_gene_seq.fasta | head
+
+# Check that the new file contains the same number of sequences as the list of gene names, and that this number matches the UH vs. NH differentially expressed genes in the paper (397)
+grep ">" UH.vs.NH_DE_gene_seq.fasta -c
+grep "gi" UH.vs.NH_gene_names.txt -c
