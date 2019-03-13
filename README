@@ -1,0 +1,18 @@
+## Made kallisto references indices with:
+
+kallisto index -i dev_transcriptome.idx urchin_developmental_transcriptome.fasta
+kallisto index -i trinity.transcriptome.idx foururchins.trinity.fasta
+
+## regarding kallisto outputs, I ran Kallisto six times to compare alignment rates. Not every one of these ran to completion on all of the data due to time constraints
+
+# without bootstrapping, just to est. alignment rates:
+
+run_kallisto_singlend.sh --> kallisto_outs_single_end/
+run_kallisto_pairedend.sh --> kallisto_outs_no_strand_specified/
+run_kallisto_stranded.sh kallisto_outs_rf/
+
+# with bootstrapping:
+
+run_kallisto_dev.sh --> kallisto_dev_outs/
+run_kallisto_trinity.sh --> kallisto_trinity_outs/
+
